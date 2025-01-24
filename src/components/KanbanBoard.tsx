@@ -5,12 +5,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { Plus } from "lucide-react";
 import { TaskCard } from "./TaskCard";
 import { useToast } from "@/components/ui/use-toast";
+import { useUser } from "@/contexts/UserContext";
+import { UserManagement } from "./UserManagement";
 
 interface Task {
   id: string;
   title: string;
   description: string;
   status: string;
+  userId: string;
 }
 
 const STATUSES = ["backlog", "todo", "in-progress", "done"];
@@ -20,8 +23,18 @@ export const KanbanBoard = () => {
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [newTaskDescription, setNewTaskDescription] = useState("");
   const { toast } = useToast();
+  const { currentUser } = useUser();
 
   const addTask = () => {
+    if (!currentUser) {
+      toast({
+        title: "Error",
+        description: "Please select a user first",
+        variant: "destructive",
+      });
+      return;
+    }
+
     if (!newTaskTitle.trim()) {
       toast({
         title: "Error",
@@ -36,6 +49,7 @@ export const KanbanBoard = () => {
       title: newTaskTitle,
       description: newTaskDescription,
       status: "backlog",
+      userId: currentUser.id,
     };
 
     setTasks([...tasks, newTask]);
@@ -52,7 +66,8 @@ export const KanbanBoard = () => {
       tasks.map((task) => {
         if (task.id === taskId) {
           const currentIndex = STATUSES.indexOf(task.status);
-          const newIndex = direction === "forward" ? currentIndex + 1 : currentIndex - 1;
+          const newIndex =
+            direction === "forward" ? currentIndex + 1 : currentIndex - 1;
           if (newIndex >= 0 && newIndex < STATUSES.length) {
             return { ...task, status: STATUSES[newIndex] };
           }
@@ -62,7 +77,11 @@ export const KanbanBoard = () => {
     );
   };
 
-  const updateTask = (taskId: string, newTitle: string, newDescription: string) => {
+  const updateTask = (
+    taskId: string,
+    newTitle: string,
+    newDescription: string
+  ) => {
     setTasks(
       tasks.map((task) =>
         task.id === taskId
@@ -76,10 +95,17 @@ export const KanbanBoard = () => {
     });
   };
 
+  const filteredTasks = tasks.filter(
+    (task) => currentUser && task.userId === currentUser.id
+  );
+
   return (
     <div className="p-6 max-w-[1400px] mx-auto">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-6">Task Board</h1>
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold">Task Board</h1>
+          <UserManagement />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
           <Input
             placeholder="New task title"
@@ -104,7 +130,7 @@ export const KanbanBoard = () => {
             <h2 className="text-xl font-semibold mb-4 capitalize">
               {status.replace("-", " ")}
             </h2>
-            {tasks
+            {filteredTasks
               .filter((task) => task.status === status)
               .map((task) => (
                 <TaskCard
