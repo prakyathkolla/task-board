@@ -4,6 +4,23 @@
 
 **URL**: https://lovable.dev/projects/79ca29f3-d84a-46fa-aed2-d28575499bd5
 
+## Features
+
+- **Kanban Board**: Organize tasks across different stages (Backlog, Todo, In Progress, Done)
+- **Task Management**: 
+  - Create tasks with title and description
+  - Set task priorities (Low, Medium, High)
+  - Move tasks between columns
+  - Edit task details
+- **User Management**:
+  - Add multiple users
+  - Switch between user dashboards
+  - User-specific task views
+- **Responsive Design**:
+  - Works on mobile and desktop
+  - Adaptive layout for different screen sizes
+- **Dark Mode**: Toggle between light and dark themes
+
 ## How can I edit this code?
 
 There are several ways of editing your application.
@@ -59,6 +76,24 @@ This project is built with .
 - React
 - shadcn-ui
 - Tailwind CSS
+- React Query (@tanstack/react-query)
+- React Router DOM
+- Lucide React (for icons)
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── KanbanBoard.tsx    # Main Kanban board component
+│   ├── TaskCard.tsx       # Individual task card component
+│   ├── UserManagement.tsx # User management interface
+│   └── mode-toggle.tsx    # Dark mode toggle
+├── contexts/
+│   └── UserContext.tsx    # User state management
+└── pages/
+    └── Index.tsx          # Main application page
+```
 
 ## How can I deploy this project?
 
