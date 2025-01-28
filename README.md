@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/79ca29f3-d84a-46fa-aed2-d28575499bd5
+**URL**: https://task-board.kollaprakyath.dev/
 
 ## Features
 
@@ -21,10 +21,10 @@
   - Adaptive layout for different screen sizes
 - **Dark Mode**: Toggle between light and dark themes
 
+![ScreenShot of Form](images/task.png)
 
-**Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+**Getting Started**
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
@@ -43,6 +43,11 @@ npm i
 # Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 ## What technologies are used for this project?
 
