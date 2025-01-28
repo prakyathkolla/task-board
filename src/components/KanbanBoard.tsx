@@ -7,6 +7,13 @@ import { TaskCard } from "./TaskCard";
 import { useToast } from "@/components/ui/use-toast";
 import { useUser } from "@/contexts/UserContext";
 import { UserManagement } from "./UserManagement";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface Task {
   id: string;
@@ -14,14 +21,21 @@ interface Task {
   description: string;
   status: string;
   userId: string;
+  priority: "low" | "medium" | "high";
 }
 
 const STATUSES = ["backlog", "todo", "in-progress", "done"];
+const PRIORITIES = [
+  { value: "low", label: "Low Priority" },
+  { value: "medium", label: "Medium Priority" },
+  { value: "high", label: "High Priority" },
+];
 
 export const KanbanBoard = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [newTaskDescription, setNewTaskDescription] = useState("");
+  const [newTaskPriority, setNewTaskPriority] = useState<"low" | "medium" | "high">("medium");
   const { toast } = useToast();
   const { currentUser } = useUser();
 
@@ -50,11 +64,13 @@ export const KanbanBoard = () => {
       description: newTaskDescription,
       status: "backlog",
       userId: currentUser.id,
+      priority: newTaskPriority,
     };
 
     setTasks([...tasks, newTask]);
     setNewTaskTitle("");
     setNewTaskDescription("");
+    setNewTaskPriority("medium");
     toast({
       title: "Success",
       description: "Task added successfully",
@@ -80,12 +96,13 @@ export const KanbanBoard = () => {
   const updateTask = (
     taskId: string,
     newTitle: string,
-    newDescription: string
+    newDescription: string,
+    newPriority: "low" | "medium" | "high"
   ) => {
     setTasks(
       tasks.map((task) =>
         task.id === taskId
-          ? { ...task, title: newTitle, description: newDescription }
+          ? { ...task, title: newTitle, description: newDescription, priority: newPriority }
           : task
       )
     );
@@ -117,6 +134,21 @@ export const KanbanBoard = () => {
             value={newTaskDescription}
             onChange={(e) => setNewTaskDescription(e.target.value)}
           />
+          <Select
+            value={newTaskPriority}
+            onValueChange={(value: "low" | "medium" | "high") => setNewTaskPriority(value)}
+          >
+            <SelectTrigger>
+              <SelectValue placeholder="Select priority" />
+            </SelectTrigger>
+            <SelectContent>
+              {PRIORITIES.map((priority) => (
+                <SelectItem key={priority.value} value={priority.value}>
+                  {priority.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
           <Button onClick={addTask} className="md:col-span-2">
             <Plus className="h-4 w-4 mr-2" />
             Add Task
