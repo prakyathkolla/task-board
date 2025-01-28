@@ -35,27 +35,27 @@ export const UserManagement = () => {
   };
 
   return (
-    <div className="flex items-center gap-4">
-      <div className="flex gap-2">
+    <div className="flex flex-col sm:flex-row items-center gap-4">
+      <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
         <Input
           placeholder="Add new user"
           value={newUserName}
           onChange={(e) => setNewUserName(e.target.value)}
-          className="w-40"
+          className="w-full sm:w-40"
         />
-        <Button onClick={handleAddUser} variant="outline">
+        <Button onClick={handleAddUser} variant="outline" className="w-full sm:w-auto">
           Add User
         </Button>
       </div>
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="gap-2">
+          <Button variant="outline" className="gap-2 w-full sm:w-auto">
             <Users className="h-4 w-4" />
             {currentUser ? currentUser.name : "Select User"}
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent align="end">
           {users.map((user) => (
             <DropdownMenuItem
               key={user.id}
