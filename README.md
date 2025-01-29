@@ -22,14 +22,14 @@ The Task Board application is a single-page application (SPA) built with modern 
 This project leverages the following tools and frameworks:
 
 - **Frontend:**
- - Vite
- - TypeScript
- - React
- - shadcn-ui
- - Tailwind CSS
- - React Query (@tanstack/react-query)
- - React Router DOM
- - Lucide React (for icons)
+  - Vite
+  - TypeScript
+  - React
+  - shadcn-ui
+  - Tailwind CSS
+  - React Query (@tanstack/react-query)
+  - React Router DOM
+  - Lucide React (for icons)
 
 - **Development Tools:**
   - Node.js
