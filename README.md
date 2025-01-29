@@ -16,6 +16,8 @@ The Task Board application is a single-page application (SPA) built with modern 
 - **Customizable Boards:** Enables users to manage multiple boards with unique tasks and labels.
 - **Dark Mode:** A toggleable dark mode feature for a personalized user experience.
 
+---
+
 ## 🛠️ Technologies Used
 This project leverages the following tools and frameworks:
 
@@ -54,6 +56,8 @@ This project leverages the following tools and frameworks:
 
 ![ScreenShot of Form](images/task.png)
 
+---
+
 **Getting Started**
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
@@ -73,6 +77,7 @@ npm i
 # Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
+---
 
 ## License
 
