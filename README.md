@@ -1,12 +1,43 @@
-# Welcome to your Lovable project
+# Task Board
 
-## Project info
+Welcome to the Task Board project! This application is a dynamic and intuitive Kanban-style task management tool designed to help users visualize workflows, manage tasks, and improve productivity. It serves as an engaging platform to explore my skills and technical expertise in modern web development.
 
-**URL**: https://task-board.kollaprakyath.dev/
+## 🔗 Live Demo
+
+[Visit Project Website](https://task-board.kollaprakyath.dev/)
+
+---
+
+## 📂 Project Structure
+
+The Task Board application is a single-page application (SPA) built with modern web technologies for a seamless user experience. Here's an overview:
+
+- **Task Management Section:** Allows users to create, update, and delete tasks with drag-and-drop functionality for workflow visualization.
+- **Customizable Boards:** Enables users to manage multiple boards with unique tasks and labels.
+- **Dark Mode:** A toggleable dark mode feature for a personalized user experience.
+
+## 🛠️ Technologies Used
+This project leverages the following tools and frameworks:
+
+- **Frontend:**
+ - Vite
+ - TypeScript
+ - React
+ - shadcn-ui
+ - Tailwind CSS
+ - React Query (@tanstack/react-query)
+ - React Router DOM
+ - Lucide React (for icons)
+
+- **Development Tools:**
+  - Node.js
+  - npm (Node Package Manager)
+
+---
 
 ## Features
 
-- **Kanban Board**: Organize tasks across different stages (Backlog, Todo, In Progress, Done)
+- **Task Board**: Organize tasks across different stages (Backlog, Todo, In Progress, Done)
 - **Task Management**: 
   - Create tasks with title and description
   - Set task priorities (Low, Medium, High)
@@ -22,7 +53,6 @@
 - **Dark Mode**: Toggle between light and dark themes
 
 ![ScreenShot of Form](images/task.png)
-
 
 **Getting Started**
 
@@ -48,16 +78,3 @@ npm run dev
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-- React Query (@tanstack/react-query)
-- React Router DOM
-- Lucide React (for icons)
