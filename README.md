@@ -4,7 +4,7 @@ Welcome to the Task Board project! This application is a dynamic and intuitive K
 
 ## 🔗 Live Demo
 
-[Visit Project Website](https://task-board.kollaprakyath.dev/)
+[Visit Task Board Website](https://task-board.kollaprakyath.dev/)
 
 ---
 
